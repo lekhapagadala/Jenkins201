@@ -11,7 +11,7 @@ RUN ["mvn", "verify"]
 
 # Adding source, compile and package into a fat jar
 # This assumes you've configured such a goal in pom.xml
-ADD src /simple_maven_avi/src
+ADD src /maven-webapp-project/src
 RUN ["mvn", "package"]
 
 CMD ["java", "-war", "target/maven-webapp-project.war"]
