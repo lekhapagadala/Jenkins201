@@ -10,12 +10,8 @@ RUN ["mvn", "dependency:resolve"]
 RUN ["mvn", "verify"]
 
 # Adding source, compile and package into a fat jar
-# This assumes you've configured such a goal in pom.xml
 ADD src /maven-webapp-project/src
 RUN ["mvn", "package"]
 
 #Running the website in the build in tomcat
-#RUN ["mvn", "tomcat7:run"]
-
-#CMD ["java", "-war", "target/maven-webapp-project.war"]
 CMD ["mvn", "tomcat7:run"]
