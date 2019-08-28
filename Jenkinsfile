@@ -1,22 +1,20 @@
 def dockerImage
 pipeline {
   environment {
-    registry = "avi4010/maven-webapp-project"
-    registryCredential = 'dockerhub'
+    registry = "kdeepak233/devops"
+    registryCredential = 'Deep@7167'
   }
   agent any
   stages {
     stage('Cloning Git') {
       steps {
-        git 'https://github.com/avi4010/maven-webapp-project.git'
+        git 'https://github.com/kdeepak233/devops.git'
       }
     }
     stage('Building image') {
       steps{
         script {
-          //docker.build registry + ":$BUILD_NUMBER" + " --no-cache"
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
-          //dockerImage = docker.build (registry + ":$BUILD_NUMBER", " --no-cache .")
         }
       }
     }
@@ -36,7 +34,7 @@ pipeline {
     }
     stage("Running the new Image"){
         steps{
-            sh 'docker run -p 80:9090 -d avi4010/maven-webapp-project:$BUILD_NUMBER'
+            sh 'docker run -p 80:9090 -d kdeepak233/devops:$BUILD_NUMBER'
         }
     }
   }
