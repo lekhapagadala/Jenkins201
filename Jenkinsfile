@@ -2,7 +2,7 @@ def dockerImage
 pipeline {
   environment {
     registry = "kdeepak233/devops"
-    registryCredential = 'Deep@7167'
+    registryCredential = 'dockerhub'
   }
   agent any
   stages {
